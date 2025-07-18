@@ -10,6 +10,23 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 import os
 from pathlib import Path
+student_portfolios = {
+    # Example entry
+    # "michael@mergington.edu": {
+    #     "name": "Michael Smith",
+    #     "grade": "11",
+    #     "achievements": ["Chess Club Winner 2024", "Math Olympiad Finalist"],
+    #     "leadership_roles": ["Chess Club President"]
+    # }
+}
+
+@app.get("/portfolio/{email}")
+def get_student_portfolio(email: str):
+    """Get a student's portfolio by email"""
+    portfolio = student_portfolios.get(email)
+    if not portfolio:
+        raise HTTPException(status_code=404, detail="Portfolio not found")
+    return portfolio]
 
 app = FastAPI(title="Mergington High School API",
               description="API for viewing and signing up for extracurricular activities")
