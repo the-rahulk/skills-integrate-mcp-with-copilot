@@ -26,7 +26,7 @@ def get_student_portfolio(email: str):
     portfolio = student_portfolios.get(email)
     if not portfolio:
         raise HTTPException(status_code=404, detail="Portfolio not found")
-    return portfolio]
+    return portfolio
 
 app = FastAPI(title="Mergington High School API",
               description="API for viewing and signing up for extracurricular activities")
